@@ -1,24 +1,26 @@
 package com.epam.training.sofia_millan.framework.task1.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 
-public class HomePage {
-    WebDriver driver;
+public class HomePage extends BasePage{
 
-    @FindBy(className = "YSM5S")
+    @FindBy(xpath = "//div[contains(@class, 'YSM5S')]")
     WebElement searchIcon;
 
-    @FindBy(className = "mb2a7b")
+    @FindBy(xpath = "//input[contains(@class, 'mb2a7b')]")
     WebElement searchBar;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -30,7 +32,7 @@ public class HomePage {
 
     public void performSearch(){
         searchIcon.click();
-        searchBar.sendKeys("Google Cloud Platform Pricing Calculator");
+        wait.until(ExpectedConditions.visibilityOf(searchBar)).sendKeys("Google Cloud Platform Pricing Calculator");
         searchBar.sendKeys(Keys.RETURN);
     }
 }

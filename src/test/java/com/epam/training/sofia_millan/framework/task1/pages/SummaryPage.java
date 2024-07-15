@@ -16,9 +16,7 @@ import java.time.Duration;
  * which displays the estimated cost of selected services.
  * @author Sofía Millán
  */
-public class SummaryPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class SummaryPage extends  BasePage{
 
     /**
      * WebElement representing the estimated cost title.
@@ -32,7 +30,7 @@ public class SummaryPage {
      * @param driver the WebDriver instance
      */
     public SummaryPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }

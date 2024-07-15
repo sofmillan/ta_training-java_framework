@@ -1,7 +1,5 @@
 package com.epam.training.sofia_millan.framework.task1.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,21 +9,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SearchResultsPage {
-    WebDriver driver;
-    WebDriverWait wait;
+public class SearchResultsPage extends BasePage {
 
-    @FindBy(css = ".gsc-expansionArea a.gs-title")
+    @FindBy(xpath = "//a[contains(@class, 'gs-title') and contains(., 'Google Cloud Pricing Calculator')]")
     WebElement result;
 
     public SearchResultsPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        super(driver);
         PageFactory.initElements(driver,this);
     }
 
     public void search() {
         wait.until(ExpectedConditions.visibilityOf(result)).click();
-
     }
 }

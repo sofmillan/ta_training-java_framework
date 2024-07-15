@@ -53,7 +53,6 @@ public class GoogleTest {
         searchResultsPage.search();
 
         CalculatorPage calculatorPage = new CalculatorPage(driver);
-     /*   calculatorPage.openPage();*/
         calculatorPage.fillForm();
         double calculatorEstimate = calculatorPage.getEstimate();
         calculatorPage.shareEstimate();

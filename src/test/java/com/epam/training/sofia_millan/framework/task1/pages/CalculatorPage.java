@@ -18,10 +18,9 @@ import java.time.Duration;
  * which allows users to input different configurations and estimate costs.
  * @author Sofía Millán
  */
-public class CalculatorPage {
+public class CalculatorPage extends BasePage{
     private final static String URL = "https://cloud.google.com/products/calculator?hl=es";
-    private WebDriver driver;
-    private WebDriverWait wait;
+
     @FindBy(xpath ="//span[@class='qdOxv-fmcmS-wGMbrd-sM5MNb']//input[@type='number']")
     private WebElement numberInstancesInput;
     @FindBy(xpath ="//h2[text()='Compute Engine']")
@@ -49,8 +48,7 @@ public class CalculatorPage {
      * @param driver the WebDriver instance.
      */
     public CalculatorPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
