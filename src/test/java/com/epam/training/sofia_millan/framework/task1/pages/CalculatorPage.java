@@ -1,5 +1,6 @@
 package com.epam.training.sofia_millan.framework.task1.pages;
 
+import com.epam.training.sofia_millan.framework.task1.service.Instance;
 import com.epam.training.sofia_millan.framework.task1.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -68,7 +69,7 @@ public class CalculatorPage {
         addProductToEstimate(product);
 
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
-        numberInstancesInput.sendKeys("4");
+        numberInstancesInput.sendKeys(Instance.instance());
 
         findDropDown("Operating System").click();
         findItemInList("free-debian-centos-coreos-ubuntu-or-byol-bring-your-own-license").click();
