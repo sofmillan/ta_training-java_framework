@@ -4,9 +4,11 @@ package com.epam.training.sofia_millan.framework.task1.test;
 import com.epam.training.sofia_millan.framework.task1.driver.DriverSingleton;
 import com.epam.training.sofia_millan.framework.task1.pages.CalculatorPage;
 import com.epam.training.sofia_millan.framework.task1.pages.SummaryPage;
+import com.epam.training.sofia_millan.framework.task1.utils.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
@@ -17,6 +19,7 @@ import static org.testng.Assert.assertEquals;
  * This class contains automated tests for the Google Cloud Pricing Calculator.
  * @author Sofía Millán
  */
+@Listeners({TestListener.class})
 public class GoogleTest {
     static WebDriver driver;
 
@@ -49,7 +52,7 @@ public class GoogleTest {
         SummaryPage summaryPage = new SummaryPage(driver);
         double summaryEstimate = summaryPage.getEstimate();
 
-        assertEquals(calculatorEstimate, summaryEstimate);
+        assertEquals(calculatorEstimate, 2.3);
     }
 
     /**
