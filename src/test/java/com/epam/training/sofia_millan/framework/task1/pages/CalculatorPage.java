@@ -158,7 +158,7 @@ public class CalculatorPage {
      * @param product the WebElement representing the product to add
      */
     private void addProductToEstimate(WebElement product){
-        addToEstimateButton.click();
+        wait.until(ExpectedConditions.visibilityOf(addToEstimateButton)).click();
         wait.until(ExpectedConditions.visibilityOf(product)).click();
     }
 }

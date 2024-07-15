@@ -3,6 +3,8 @@ package com.epam.training.sofia_millan.framework.task1.test;
 
 import com.epam.training.sofia_millan.framework.task1.driver.DriverSingleton;
 import com.epam.training.sofia_millan.framework.task1.pages.CalculatorPage;
+import com.epam.training.sofia_millan.framework.task1.pages.HomePage;
+import com.epam.training.sofia_millan.framework.task1.pages.SearchResultsPage;
 import com.epam.training.sofia_millan.framework.task1.pages.SummaryPage;
 import com.epam.training.sofia_millan.framework.task1.utils.TestListener;
 import org.openqa.selenium.WebDriver;
@@ -43,8 +45,15 @@ public class GoogleTest {
      */
     @Test
     void calculateEstimate() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        homePage.openPage();
+        homePage.performSearch();
+
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        searchResultsPage.search();
+
         CalculatorPage calculatorPage = new CalculatorPage(driver);
-        calculatorPage.openPage();
+     /*   calculatorPage.openPage();*/
         calculatorPage.fillForm();
         double calculatorEstimate = calculatorPage.getEstimate();
         calculatorPage.shareEstimate();
@@ -52,7 +61,7 @@ public class GoogleTest {
         SummaryPage summaryPage = new SummaryPage(driver);
         double summaryEstimate = summaryPage.getEstimate();
 
-        assertEquals(calculatorEstimate, 2.3);
+        assertEquals(calculatorEstimate, summaryEstimate);
     }
 
     /**
