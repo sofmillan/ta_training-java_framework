@@ -55,8 +55,8 @@ public class GoogleTest {
     /**
      * Closes all driver windows after all test methods have been executed.
      */
-    @AfterClass
+  /*  @AfterClass
     static void tearDown(){
         DriverSingleton.closeDriver();
-    }
+    }*/
 }

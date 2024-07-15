@@ -1,6 +1,7 @@
 package com.epam.training.sofia_millan.framework.task1.pages;
 
-import com.epam.training.sofia_millan.framework.task1.service.Instance;
+import com.epam.training.sofia_millan.framework.task1.model.Instance;
+import com.epam.training.sofia_millan.framework.task1.service.InstanceCreator;
 import com.epam.training.sofia_millan.framework.task1.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -66,10 +67,11 @@ public class CalculatorPage {
      * Fills the form with predefined values.
      */
     public void fillForm() throws InterruptedException {
+        Instance instance = InstanceCreator.getInstance();
         addProductToEstimate(product);
 
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
-        numberInstancesInput.sendKeys(Instance.instance());
+        numberInstancesInput.sendKeys(instance.getNumber());
 
         findDropDown("Operating System").click();
         findItemInList("free-debian-centos-coreos-ubuntu-or-byol-bring-your-own-license").click();
@@ -97,9 +99,9 @@ public class CalculatorPage {
         driver.findElements(By.xpath("//li[@data-value='2']")).get(1).click();
 
         findDropDown("Region").click();
-        findItemInList("europe-west4").click();
+        findItemInList(instance.getRegion()).click();
 
-        findLabel("1-year").click();
+        findLabel(instance.getComittedUse()).click();
     }
 
     /**
