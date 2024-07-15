@@ -73,7 +73,7 @@ public class CalculatorPage {
 
         findDropDown("Operating System").click();
         findItemInList("free-debian-centos-coreos-ubuntu-or-byol-bring-your-own-license").click();
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         findLabel("regular").click();
 
         findDropDown("Machine Family").click();
