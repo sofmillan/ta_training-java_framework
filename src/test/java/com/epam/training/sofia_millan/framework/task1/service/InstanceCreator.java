@@ -3,22 +3,28 @@ package com.epam.training.sofia_millan.framework.task1.service;
 import com.epam.training.sofia_millan.framework.task1.model.Instance;
 
 public class InstanceCreator {
-
-    public static String instance(){
-        return TestDataReader.getTestData("testdata.instances.number");
-    }
+    private static final String NUMBER_INSTANCES = "testdata.instances.number";
+    private static final String OPERATING_SYSTEM = "testdata.instances.os";
+    private static final String PROVISIONING_MODEL = "testdata.instances.model";
+    private static final String MACHINE_FAMILY = "testdata.instances.machinefamily";
+    private static final String SERIES = "testdata.instances.series";
+    private static final String MACHINE_TYPE = "testdata.instances.machinetype";
+    private static final String GPU_MODEL = "testdata.instances.gpumodel";
+    private static final String NUMBER_GPUS = "testdata.instances.numbergpus";
+    private static final String REGION = "testdata.instances.region";
+    private static final String COMMITTED_USE = "testdata.instances.committeduse";
 
     public static Instance getInstance(){
         return new Instance(
-                TestDataReader.getTestData("testdata.instances.number"),
-                TestDataReader.getTestData("testdata.instances.os"),
-                TestDataReader.getTestData("testdata.instances.model"),
-                TestDataReader.getTestData("testdata.instances.machinefamily"),
-                TestDataReader.getTestData("testdata.instances.series"),
-                TestDataReader.getTestData("testdata.instances.machinetype"),
-                TestDataReader.getTestData("testdata.instances.gpumodel"),
-                TestDataReader.getTestData("testdata.instances.numbergpus"),
-                TestDataReader.getTestData("testdata.instances.region"),
-                TestDataReader.getTestData("testdata.instances.committeduse"));
+                TestDataReader.getTestData(NUMBER_INSTANCES),
+                TestDataReader.getTestData(OPERATING_SYSTEM),
+                TestDataReader.getTestData(PROVISIONING_MODEL),
+                TestDataReader.getTestData(MACHINE_FAMILY),
+                TestDataReader.getTestData(SERIES),
+                TestDataReader.getTestData(MACHINE_TYPE),
+                TestDataReader.getTestData(GPU_MODEL),
+                TestDataReader.getTestData(NUMBER_GPUS),
+                TestDataReader.getTestData(REGION),
+                TestDataReader.getTestData(COMMITTED_USE));
     }
 }
