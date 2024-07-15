@@ -1,13 +1,15 @@
 package com.epam.training.sofia_millan.framework.task1.test;
 
 
+import com.epam.training.sofia_millan.framework.task1.driver.DriverSingleton;
 import com.epam.training.sofia_millan.framework.task1.pages.CalculatorPage;
 import com.epam.training.sofia_millan.framework.task1.pages.SummaryPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+
 
 import static org.testng.Assert.assertEquals;
 
@@ -23,7 +25,7 @@ public class GoogleTest {
      */
     @BeforeClass
     static void setUp(){
-        driver = new ChromeDriver();
+        driver = DriverSingleton.getDriver();
     }
 
 
@@ -55,6 +57,6 @@ public class GoogleTest {
      */
     @AfterClass
     static void tearDown(){
-        driver.quit();
+        DriverSingleton.closeDriver();
     }
 }
