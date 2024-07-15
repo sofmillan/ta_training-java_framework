@@ -72,8 +72,9 @@ public class CalculatorPage extends BasePage{
         numberInstancesInput.sendKeys(instance.getNumber());
 
         findDropDown("Operating System").click();
+        Thread.sleep(7000);
         findItemInList("free-debian-centos-coreos-ubuntu-or-byol-bring-your-own-license").click();
-        Thread.sleep(5000);
+
         findLabel("regular").click();
 
         findDropDown("Machine Family").click();
@@ -138,7 +139,7 @@ public class CalculatorPage extends BasePage{
      */
     private WebElement findLabel(String title){
         String labelLocator = String.format(baseLabel, title);
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(labelLocator)));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(labelLocator)));
     }
 
     /**
