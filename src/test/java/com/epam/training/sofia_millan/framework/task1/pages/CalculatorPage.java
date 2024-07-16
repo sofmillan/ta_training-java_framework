@@ -40,7 +40,7 @@ public class CalculatorPage extends BasePage{
 
     /**
      * Constructor for CalculatorPage.
-     * Initializes the WebDriver and WebDriverWait, and sets up the PageFactory.
+     * It sets up the PageFactory.
      *
      * @param driver the WebDriver instance.
      */
