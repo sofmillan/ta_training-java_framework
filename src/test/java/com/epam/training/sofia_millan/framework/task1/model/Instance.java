@@ -2,8 +2,8 @@ package com.epam.training.sofia_millan.framework.task1.model;
 
 public class Instance {
     private String number;
-    private String os;
-    private String model;
+    private String operatingSystem;
+    private String provisioningModel;
     private String machineFamily;
     private String series;
     private String machineType;
@@ -11,13 +11,13 @@ public class Instance {
     private String numberGpus;
     private String localSSD;
     private String region;
-    private String comittedUse;
+    private String committedUse;
 
     public Instance(String number, String os, String model, String machineFamily, String series,
                     String machineType, String gpuModel, String numberGpus, String localssd, String region, String comittedUse) {
         this.number = number;
-        this.os = os;
-        this.model = model;
+        this.operatingSystem = os;
+        this.provisioningModel = model;
         this.machineFamily = machineFamily;
         this.series = series;
         this.machineType = machineType;
@@ -25,23 +25,19 @@ public class Instance {
         this.numberGpus = numberGpus;
         this.localSSD = localssd;
         this.region = region;
-        this.comittedUse = comittedUse;
-    }
-
-    public String getLocalSSD() {
-        return localSSD;
+        this.committedUse = comittedUse;
     }
 
     public void setNumber(String number) {
         this.number = number;
     }
 
-    public void setOs(String os) {
-        this.os = os;
+    public void setOperatingSystem(String operatingSystem) {
+        this.operatingSystem = operatingSystem;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setProvisioningModel(String provisioningModel) {
+        this.provisioningModel = provisioningModel;
     }
 
     public void setMachineFamily(String machineFamily) {
@@ -68,20 +64,20 @@ public class Instance {
         this.region = region;
     }
 
-    public void setComittedUse(String comittedUse) {
-        this.comittedUse = comittedUse;
+    public void setCommittedUse(String committedUse) {
+        this.committedUse = committedUse;
     }
 
     public String getNumber() {
         return number;
     }
 
-    public String getOs() {
-        return os;
+    public String getOperatingSystem() {
+        return operatingSystem;
     }
 
-    public String getModel() {
-        return model;
+    public String getProvisioningModel() {
+        return provisioningModel;
     }
 
     public String getMachineFamily() {
@@ -108,7 +104,10 @@ public class Instance {
         return region;
     }
 
-    public String getComittedUse() {
-        return comittedUse;
+    public String getCommittedUse() {
+        return committedUse;
+    }
+    public String getLocalSSD() {
+        return localSSD;
     }
 }

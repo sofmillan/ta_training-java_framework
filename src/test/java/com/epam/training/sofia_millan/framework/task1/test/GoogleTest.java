@@ -15,9 +15,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -54,7 +51,7 @@ public class GoogleTest {
         homePage.performSearch();
 
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
-        searchResultsPage.search();
+        searchResultsPage.followLinkToCalculator();
 
         Instance instance = InstanceCreator.getInstance();
 
@@ -67,14 +64,14 @@ public class GoogleTest {
         double summaryEstimate = summaryPage.getEstimate();
 
         assertEquals(calculatorEstimate, summaryEstimate);
-        assertEquals(instance.getNumber(), summaryPage.getValueOf(InstanceConstants.INSTANCE_NUMBER));
-        assertEquals(instance.getGpuModel(), summaryPage.getValueOf(InstanceConstants.GPU_MODEL));
-        assertEquals(instance.getRegion(), summaryPage.getValueOf(InstanceConstants.REGION));
-        assertEquals(instance.getModel(), summaryPage.getValueOf(InstanceConstants.PROVISIONING_MODEL));
-        assertEquals(instance.getNumberGpus(), summaryPage.getValueOf(InstanceConstants.GPU_NUMBER));
-        assertEquals(instance.getLocalSSD(), summaryPage.getValueOf(InstanceConstants.LOCAL_SSD));
-        assertEquals(instance.getComittedUse(), summaryPage.getValueOf(InstanceConstants.COMMITTED_USE));
-        assertEquals(instance.getOs(), summaryPage.getValueOf(InstanceConstants.OPERATING_SYSTEM));
+        assertEquals(summaryPage.getValueOf(InstanceConstants.INSTANCE_NUMBER), instance.getNumber());
+        assertEquals(summaryPage.getValueOf(InstanceConstants.GPU_MODEL), instance.getGpuModel());
+        assertEquals(summaryPage.getValueOf(InstanceConstants.REGION), instance.getRegion());
+        assertEquals(summaryPage.getValueOf(InstanceConstants.PROVISIONING_MODEL), instance.getProvisioningModel());
+        assertEquals(summaryPage.getValueOf(InstanceConstants.GPU_NUMBER), instance.getNumberGpus());
+        assertEquals(summaryPage.getValueOf(InstanceConstants.LOCAL_SSD), instance.getLocalSSD());
+        assertEquals(summaryPage.getValueOf(InstanceConstants.COMMITTED_USE), instance.getCommittedUse());
+        assertEquals(summaryPage.getValueOf(InstanceConstants.OPERATING_SYSTEM), instance.getOperatingSystem());
         assertTrue(summaryPage.getValueOf(InstanceConstants.MACHINE_TYPE).contains(instance.getMachineType()));
 
 
@@ -83,8 +80,8 @@ public class GoogleTest {
     /**
      * Closes all driver windows after all test methods have been executed.
      */
-  /*  @AfterClass
+    @AfterClass
     static void tearDown(){
         DriverSingleton.closeDriver();
-    }*/
+    }
 }

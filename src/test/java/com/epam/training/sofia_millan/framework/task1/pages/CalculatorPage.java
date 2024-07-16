@@ -36,7 +36,7 @@ public class CalculatorPage extends BasePage{
     private WebElement updateMessage;
     private String baseDropDown = "//div[contains(@class, 'VfPpkd-TkwUic') and .//span[contains(@class, 'VfPpkd-NLUYnc-V67aGc-OWXEXe-TATcMc-KLRBe') and contains(text(), '%s')]]";
     private String baseLabel = "//label[contains(@class, 'zT2df') and contains(., '%s')]";
-    private String anotherItem = "//ul[@aria-label='%s']//li[contains(.,'%s')]";
+    private String baseListItem = "//ul[@aria-label='%s']//li[contains(.,'%s')]";
 
     /**
      * Constructor for CalculatorPage.
@@ -50,28 +50,18 @@ public class CalculatorPage extends BasePage{
     }
 
     /**
-     * Opens the calculator page in the web browser.
-     * Maximizes the browser window.
-     */
-    public void openPage(){
-        driver.get(URL);
-        driver.manage().window().maximize();
-    }
-
-    /**
      * Fills the form with predefined values.
      */
     public void fillForm(Instance instance) throws InterruptedException {
         addProductToEstimate(product);
-        Thread.sleep(6000);
-      /*  wait.until(ExpectedConditions.invisibilityOf(updateMessage));*/
+        wait.until(ExpectedConditions.invisibilityOf(updateMessage));
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
         numberInstancesInput.sendKeys(instance.getNumber());
 
         findDropDown(InstanceConstants.OPERATING_SYSTEM).click();
-        findItemInList(InstanceConstants.OPERATING_SYSTEM, instance.getOs()).click();
+        findItemInList(InstanceConstants.OPERATING_SYSTEM, instance.getOperatingSystem()).click();
 
-        findLabel(instance.getModel()).click();
+        findLabel(instance.getProvisioningModel()).click();
 
         findDropDown(InstanceConstants.MACHINE_FAMILY).click();
         findItemInList(InstanceConstants.MACHINE_FAMILY, instance.getMachineFamily()).click();
@@ -98,7 +88,7 @@ public class CalculatorPage extends BasePage{
         findDropDown(InstanceConstants.REGION).click();
         findItemInList(InstanceConstants.REGION,instance.getRegion()).click();
 
-        findLabel(instance.getComittedUse()).click();
+        findLabel(instance.getCommittedUse()).click();
     }
 
     /**
@@ -142,12 +132,13 @@ public class CalculatorPage extends BasePage{
 
     /**
      * Finds an item in a list by its value.
+     * @param title the title of the list
      * @param value the value of the list item
      * @return the WebElement representing the list item
      */
 
     private WebElement findItemInList(String title, String value){
-        String listItemLocator = String.format(anotherItem, title, value);
+        String listItemLocator = String.format(baseListItem, title, value);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listItemLocator)));
     }
 

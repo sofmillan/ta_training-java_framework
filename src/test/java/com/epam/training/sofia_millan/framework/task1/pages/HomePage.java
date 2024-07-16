@@ -24,6 +24,10 @@ public class HomePage extends BasePage{
         PageFactory.initElements(driver,this);
     }
 
+    /**
+     * Opens the calculator page in the web browser.
+     * Maximizes the browser window.
+     */
     public void openPage() {
         driver.get("https://cloud.google.com/");
         driver.manage().window().maximize();

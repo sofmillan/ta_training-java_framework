@@ -5,9 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class SearchResultsPage extends BasePage {
 
@@ -19,7 +16,7 @@ public class SearchResultsPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public void search() {
+    public void followLinkToCalculator() {
         wait.until(ExpectedConditions.visibilityOf(result)).click();
     }
 }
