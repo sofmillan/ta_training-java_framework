@@ -16,8 +16,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Sofía Millán
  */
 public class CalculatorPage extends BasePage{
-    private final static String URL = "https://cloud.google.com/products/calculator?hl=es";
-
     @FindBy(xpath ="//span[@class='qdOxv-fmcmS-wGMbrd-sM5MNb']//input[@type='number']")
     private WebElement numberInstancesInput;
     @FindBy(xpath ="//h2[text()='Compute Engine']")
@@ -40,7 +38,7 @@ public class CalculatorPage extends BasePage{
 
     /**
      * Constructor for CalculatorPage.
-     * Initializes the WebDriver and WebDriverWait, and sets up the PageFactory.
+     * It sets up the PageFactory.
      *
      * @param driver the WebDriver instance.
      */
@@ -50,9 +48,9 @@ public class CalculatorPage extends BasePage{
     }
 
     /**
-     * Fills the form with predefined values.
+     * Fills the form for Computer Engine.
      */
-    public void fillForm(Instance instance) throws InterruptedException {
+    public void fillForm(Instance instance) {
         addProductToEstimate(product);
         wait.until(ExpectedConditions.invisibilityOf(updateMessage));
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
