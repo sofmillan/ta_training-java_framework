@@ -8,6 +8,7 @@ import com.epam.training.sofia_millan.framework.task1.pages.HomePage;
 import com.epam.training.sofia_millan.framework.task1.pages.SearchResultsPage;
 import com.epam.training.sofia_millan.framework.task1.pages.SummaryPage;
 import com.epam.training.sofia_millan.framework.task1.service.InstanceCreator;
+import com.epam.training.sofia_millan.framework.task1.utils.InstanceConstants;
 import com.epam.training.sofia_millan.framework.task1.utils.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -66,15 +67,16 @@ public class GoogleTest {
         double summaryEstimate = summaryPage.getEstimate();
 
         assertEquals(calculatorEstimate, summaryEstimate);
-        assertEquals(instance.getNumber(), summaryPage.getValueOf("Number of Instances"));
-        assertEquals(instance.getGpuModel(), summaryPage.getValueOf("GPU Model"));
-        assertEquals(instance.getRegion(), summaryPage.getValueOf("Region"));
-        assertEquals(instance.getModel(), summaryPage.getValueOf("Provisioning Model"));
-        assertEquals(instance.getNumberGpus(), summaryPage.getValueOf("Number of GPUs"));
-        assertEquals(instance.getLocalSSD(), summaryPage.getValueOf("Local SSD"));
-        assertEquals(instance.getComittedUse(), summaryPage.getValueOf("Committed use discount options"));
-        assertEquals(instance.getOs(), summaryPage.getValueOf("Operating System"));
-        assertTrue(summaryPage.getValueOf("Machine type").contains(instance.getMachineType()));
+        assertEquals(instance.getNumber(), summaryPage.getValueOf(InstanceConstants.INSTANCE_NUMBER));
+        assertEquals(instance.getGpuModel(), summaryPage.getValueOf(InstanceConstants.GPU_MODEL));
+        assertEquals(instance.getRegion(), summaryPage.getValueOf(InstanceConstants.REGION));
+        assertEquals(instance.getModel(), summaryPage.getValueOf(InstanceConstants.PROVISIONING_MODEL));
+        assertEquals(instance.getNumberGpus(), summaryPage.getValueOf(InstanceConstants.GPU_NUMBER));
+        assertEquals(instance.getLocalSSD(), summaryPage.getValueOf(InstanceConstants.LOCAL_SSD));
+        assertEquals(instance.getComittedUse(), summaryPage.getValueOf(InstanceConstants.COMMITTED_USE));
+        assertEquals(instance.getOs(), summaryPage.getValueOf(InstanceConstants.OPERATING_SYSTEM));
+        assertTrue(summaryPage.getValueOf(InstanceConstants.MACHINE_TYPE).contains(instance.getMachineType()));
+
 
     }
 

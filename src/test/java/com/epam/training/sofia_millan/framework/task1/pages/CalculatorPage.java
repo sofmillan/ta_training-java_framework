@@ -1,7 +1,7 @@
 package com.epam.training.sofia_millan.framework.task1.pages;
 
 import com.epam.training.sofia_millan.framework.task1.model.Instance;
-import com.epam.training.sofia_millan.framework.task1.service.InstanceCreator;
+import com.epam.training.sofia_millan.framework.task1.utils.InstanceConstants;
 import com.epam.training.sofia_millan.framework.task1.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,9 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 /**
  * This class represents the calculator page of the Google Cloud Pricing Calculator,
@@ -38,7 +35,6 @@ public class CalculatorPage extends BasePage{
     @FindBy(xpath = "//div[contains(@class,'Z7Qi9d') and contains(@class, ' HY0Uh')]")
     private WebElement updateMessage;
     private String baseDropDown = "//div[contains(@class, 'VfPpkd-TkwUic') and .//span[contains(@class, 'VfPpkd-NLUYnc-V67aGc-OWXEXe-TATcMc-KLRBe') and contains(text(), '%s')]]";
-    private String baseListItem = "//li[contains(., '%s')]";
     private String baseLabel = "//label[contains(@class, 'zT2df') and contains(., '%s')]";
     private String anotherItem = "//ul[@aria-label='%s']//li[contains(.,'%s')]";
 
@@ -65,40 +61,42 @@ public class CalculatorPage extends BasePage{
     /**
      * Fills the form with predefined values.
      */
-    public void fillForm(Instance instance) {
+    public void fillForm(Instance instance) throws InterruptedException {
         addProductToEstimate(product);
-        wait.until(ExpectedConditions.invisibilityOf(updateMessage));
+        Thread.sleep(6000);
+      /*  wait.until(ExpectedConditions.invisibilityOf(updateMessage));*/
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
         numberInstancesInput.sendKeys(instance.getNumber());
 
-        findDropDown("Operating System").click();
-        findItemInList(instance.getOs()).click();
+        findDropDown(InstanceConstants.OPERATING_SYSTEM).click();
+        findItemInList(InstanceConstants.OPERATING_SYSTEM, instance.getOs()).click();
 
         findLabel(instance.getModel()).click();
 
-        findDropDown("Machine Family").click();
-        findItemInList(instance.getMachineFamily()).click();
+        findDropDown(InstanceConstants.MACHINE_FAMILY).click();
+        findItemInList(InstanceConstants.MACHINE_FAMILY, instance.getMachineFamily()).click();
 
-        findDropDown("Series").click();
-        findItemInList(instance.getSeries()).click();
+        findDropDown(InstanceConstants.SERIES).click();
+        findItemInList(InstanceConstants.SERIES, instance.getSeries()).click();
 
-        findDropDown("Machine type").click();
-        findItemInList(instance.getMachineType()).click();
+
+        findDropDown(InstanceConstants.MACHINE_TYPE).click();
+        findItemInList(InstanceConstants.MACHINE_TYPE, instance.getMachineType()).click();
 
         addGPUButton.click();
 
-        findDropDown("GPU Model").click();
-        findItemInList(instance.getGpuModel()).click();
+        findDropDown(InstanceConstants.GPU_MODEL).click();
+        findItemInList(InstanceConstants.GPU_MODEL, instance.getGpuModel()).click();
 
-        findDropDown("Number of GPUs").click();
-        findItem("Number of GPUs",instance.getNumberGpus()).click();
+        findDropDown(InstanceConstants.GPU_NUMBER).click();
+        findItemInList(InstanceConstants.GPU_NUMBER,instance.getNumberGpus()).click();
 
 
-        findDropDown("Local SSD").click();
-        findItem("Local SSD",instance.getLocalSSD()).click();
+        findDropDown(InstanceConstants.LOCAL_SSD).click();
+        findItemInList(InstanceConstants.LOCAL_SSD,instance.getLocalSSD()).click();
 
-        findDropDown("Region").click();
-        findItemInList(instance.getRegion()).click();
+        findDropDown(InstanceConstants.REGION).click();
+        findItemInList(InstanceConstants.REGION,instance.getRegion()).click();
 
         findLabel(instance.getComittedUse()).click();
     }
@@ -147,12 +145,8 @@ public class CalculatorPage extends BasePage{
      * @param value the value of the list item
      * @return the WebElement representing the list item
      */
-    private WebElement findItemInList(String value){
-        String listItemLocator = String.format(baseListItem, value);
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listItemLocator)));
-    }
 
-    private WebElement findItem(String title, String value){
+    private WebElement findItemInList(String title, String value){
         String listItemLocator = String.format(anotherItem, title, value);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listItemLocator)));
     }
