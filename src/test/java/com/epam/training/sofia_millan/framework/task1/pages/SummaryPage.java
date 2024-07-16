@@ -2,6 +2,7 @@ package com.epam.training.sofia_millan.framework.task1.pages;
 
 import com.epam.training.sofia_millan.framework.task1.utils.BrowserUtils;
 import com.epam.training.sofia_millan.framework.task1.utils.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,7 @@ public class SummaryPage extends  BasePage{
     @FindBy(xpath = "//h4[contains(@class, 'n8xu5')]")
     private WebElement estimatedCostTitle;
 
+    private String baseResult = "//span[contains(@class,'Z7Pe2d') and contains(., '%s')]//span[contains(@class,'Kfvdz')]";
     /**
      * Constructor for SummaryPage.
      * Initializes the WebDriver and WebDriverWait, and sets up the PageFactory.
@@ -46,5 +48,11 @@ public class SummaryPage extends  BasePage{
                 .visibilityOf(estimatedCostTitle)).getText();
         return Utils.convertStringToDouble(estimate);
     }
+
+    public String getValueOf(String title){
+        String dropDownLocator = String.format(baseResult, title);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dropDownLocator))).getText();
+    }
+
 
 }

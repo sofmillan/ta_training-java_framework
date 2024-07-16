@@ -2,10 +2,12 @@ package com.epam.training.sofia_millan.framework.task1.test;
 
 
 import com.epam.training.sofia_millan.framework.task1.driver.DriverSingleton;
+import com.epam.training.sofia_millan.framework.task1.model.Instance;
 import com.epam.training.sofia_millan.framework.task1.pages.CalculatorPage;
 import com.epam.training.sofia_millan.framework.task1.pages.HomePage;
 import com.epam.training.sofia_millan.framework.task1.pages.SearchResultsPage;
 import com.epam.training.sofia_millan.framework.task1.pages.SummaryPage;
+import com.epam.training.sofia_millan.framework.task1.service.InstanceCreator;
 import com.epam.training.sofia_millan.framework.task1.utils.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -16,6 +18,7 @@ import org.testng.annotations.Test;
 
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * This class contains automated tests for the Google Cloud Pricing Calculator.
@@ -52,8 +55,10 @@ public class GoogleTest {
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.search();
 
+        Instance instance = InstanceCreator.getInstance();
+
         CalculatorPage calculatorPage = new CalculatorPage(driver);
-        calculatorPage.fillForm();
+        calculatorPage.fillForm(instance);
         double calculatorEstimate = calculatorPage.getEstimate();
         calculatorPage.shareEstimate();
 
@@ -61,6 +66,16 @@ public class GoogleTest {
         double summaryEstimate = summaryPage.getEstimate();
 
         assertEquals(calculatorEstimate, summaryEstimate);
+        assertEquals(instance.getNumber(), summaryPage.getValueOf("Number of Instances"));
+        assertEquals(instance.getGpuModel(), summaryPage.getValueOf("GPU Model"));
+        assertEquals(instance.getRegion(), summaryPage.getValueOf("Region"));
+        assertEquals(instance.getModel(), summaryPage.getValueOf("Provisioning Model"));
+        assertEquals(instance.getNumberGpus(), summaryPage.getValueOf("Number of GPUs"));
+        assertEquals(instance.getLocalSSD(), summaryPage.getValueOf("Local SSD"));
+        assertEquals(instance.getComittedUse(), summaryPage.getValueOf("Committed use discount options"));
+        assertEquals(instance.getOs(), summaryPage.getValueOf("Operating System"));
+        assertTrue(summaryPage.getValueOf("Machine type").contains(instance.getMachineType()));
+
     }
 
     /**

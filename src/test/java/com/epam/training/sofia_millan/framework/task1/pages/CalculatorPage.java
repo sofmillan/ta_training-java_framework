@@ -38,8 +38,9 @@ public class CalculatorPage extends BasePage{
     @FindBy(xpath = "//div[contains(@class,'Z7Qi9d') and contains(@class, ' HY0Uh')]")
     private WebElement updateMessage;
     private String baseDropDown = "//div[contains(@class, 'VfPpkd-TkwUic') and .//span[contains(@class, 'VfPpkd-NLUYnc-V67aGc-OWXEXe-TATcMc-KLRBe') and contains(text(), '%s')]]";
-    private String baseListItem = "//li[@data-value='%s']";
-    private String baseLabel = "//label[contains(@class, 'zT2df') and @for='%s']";
+    private String baseListItem = "//li[contains(., '%s')]";
+    private String baseLabel = "//label[contains(@class, 'zT2df') and contains(., '%s')]";
+    private String anotherItem = "//ul[@aria-label='%s']//li[contains(.,'%s')]";
 
     /**
      * Constructor for CalculatorPage.
@@ -64,38 +65,37 @@ public class CalculatorPage extends BasePage{
     /**
      * Fills the form with predefined values.
      */
-    public void fillForm() throws InterruptedException {
-        Instance instance = InstanceCreator.getInstance();
+    public void fillForm(Instance instance) {
         addProductToEstimate(product);
-
+        wait.until(ExpectedConditions.invisibilityOf(updateMessage));
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
         numberInstancesInput.sendKeys(instance.getNumber());
 
         findDropDown("Operating System").click();
-        Thread.sleep(7000);
-        findItemInList("free-debian-centos-coreos-ubuntu-or-byol-bring-your-own-license").click();
+        findItemInList(instance.getOs()).click();
 
-        findLabel("regular").click();
+        findLabel(instance.getModel()).click();
 
         findDropDown("Machine Family").click();
-        findItemInList("general-purpose").click();
+        findItemInList(instance.getMachineFamily()).click();
 
         findDropDown("Series").click();
-        findItemInList("n1").click();
+        findItemInList(instance.getSeries()).click();
 
         findDropDown("Machine type").click();
-        findItemInList("n1-standard-8").click();
+        findItemInList(instance.getMachineType()).click();
 
         addGPUButton.click();
 
         findDropDown("GPU Model").click();
-        findItemInList("nvidia-tesla-v100").click();
+        findItemInList(instance.getGpuModel()).click();
 
         findDropDown("Number of GPUs").click();
-        findItemInList("1").click();
+        findItem("Number of GPUs",instance.getNumberGpus()).click();
+
 
         findDropDown("Local SSD").click();
-        driver.findElements(By.xpath("//li[@data-value='2']")).get(1).click();
+        findItem("Local SSD",instance.getLocalSSD()).click();
 
         findDropDown("Region").click();
         findItemInList(instance.getRegion()).click();
@@ -149,6 +149,11 @@ public class CalculatorPage extends BasePage{
      */
     private WebElement findItemInList(String value){
         String listItemLocator = String.format(baseListItem, value);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listItemLocator)));
+    }
+
+    private WebElement findItem(String title, String value){
+        String listItemLocator = String.format(anotherItem, title, value);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listItemLocator)));
     }
 

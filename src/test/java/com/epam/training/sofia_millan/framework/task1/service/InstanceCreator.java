@@ -13,6 +13,7 @@ public class InstanceCreator {
     private static final String NUMBER_GPUS = "testdata.instances.numbergpus";
     private static final String REGION = "testdata.instances.region";
     private static final String COMMITTED_USE = "testdata.instances.committeduse";
+    private static final String LOCAL_SSD = "testdata.instances.localssd";
 
     public static Instance getInstance(){
         return new Instance(
@@ -24,6 +25,7 @@ public class InstanceCreator {
                 TestDataReader.getTestData(MACHINE_TYPE),
                 TestDataReader.getTestData(GPU_MODEL),
                 TestDataReader.getTestData(NUMBER_GPUS),
+                TestDataReader.getTestData(LOCAL_SSD),
                 TestDataReader.getTestData(REGION),
                 TestDataReader.getTestData(COMMITTED_USE));
     }

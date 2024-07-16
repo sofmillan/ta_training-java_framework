@@ -9,11 +9,12 @@ public class Instance {
     private String machineType;
     private String gpuModel;
     private String numberGpus;
+    private String localSSD;
     private String region;
     private String comittedUse;
 
     public Instance(String number, String os, String model, String machineFamily, String series,
-                    String machineType, String gpuModel, String numberGpus, String region, String comittedUse) {
+                    String machineType, String gpuModel, String numberGpus, String localssd, String region, String comittedUse) {
         this.number = number;
         this.os = os;
         this.model = model;
@@ -22,8 +23,13 @@ public class Instance {
         this.machineType = machineType;
         this.gpuModel = gpuModel;
         this.numberGpus = numberGpus;
+        this.localSSD = localssd;
         this.region = region;
         this.comittedUse = comittedUse;
+    }
+
+    public String getLocalSSD() {
+        return localSSD;
     }
 
     public void setNumber(String number) {
