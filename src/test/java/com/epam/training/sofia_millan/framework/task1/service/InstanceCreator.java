@@ -2,6 +2,7 @@ package com.epam.training.sofia_millan.framework.task1.service;
 
 import com.epam.training.sofia_millan.framework.task1.model.Instance;
 
+// ******* CRITERIA 4 *********
 public class InstanceCreator {
     private static final String NUMBER_INSTANCES = "testdata.instances.number";
     private static final String OPERATING_SYSTEM = "testdata.instances.os";

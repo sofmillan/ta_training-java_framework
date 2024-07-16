@@ -1,5 +1,6 @@
 package com.epam.training.sofia_millan.framework.task1.model;
 
+// ******* CRITERIA 3 *********
 public class Instance {
     private String number;
     private String operatingSystem;
