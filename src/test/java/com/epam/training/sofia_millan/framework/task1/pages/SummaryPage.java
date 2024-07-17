@@ -42,6 +42,12 @@ public class SummaryPage extends  BasePage{
         return Utils.convertStringToDouble(estimate);
     }
 
+    /**
+     * Retrieves the text value of a web element based on the specified title.
+     *
+     * @param title the title used to locate the web element
+     * @return the text value of the web element
+     */
     public String getValueOf(String title){
         String dropDownLocator = String.format(baseResult, title);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dropDownLocator))).getText();

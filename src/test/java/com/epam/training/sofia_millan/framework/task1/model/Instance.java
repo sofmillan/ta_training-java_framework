@@ -1,6 +1,11 @@
 package com.epam.training.sofia_millan.framework.task1.model;
 
 // ******* CRITERIA 3 *********
+/**
+ * This class represents the configuration for a Google Cloud instance and provides
+ * getter and setter methods to access and modify its attributes.
+ * @author Sofía Millán
+ */
 public class Instance {
     private String number;
     private String operatingSystem;
