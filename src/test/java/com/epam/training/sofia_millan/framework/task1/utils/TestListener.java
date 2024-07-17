@@ -13,13 +13,27 @@ import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+
 // ******* CRITERIA 6 *********
+/**
+ * This class provides custom behavior for handling test events in a test framework.
+ * @author Sofía Millán
+ */
 public class TestListener implements ITestListener {
     private final Logger logger = LogManager.getRootLogger();
+
+    /**
+     * Invoked when a test fails. Takes a screenshot the browser and saves it to a specified directory.
+     * @param iTestResult the result of the test that failed.
+     */
     public void onTestFailure(ITestResult iTestResult) {
         saveScreenshot();
     }
 
+    /**
+     * Takes a screenshot of the current state of the active browser window and saves it to the
+     * {@code target/test-failure-screenshots/} directory with a timestamp in the filename.
+     */
     private void saveScreenshot(){
         File screenCapture = ((TakesScreenshot) DriverSingleton
                 .getDriver())
@@ -34,6 +48,10 @@ public class TestListener implements ITestListener {
         }
     }
 
+    /**
+     * Returns the current time as a string formatted as {@code yyyy-MM-dd_HH-mm-ss}.
+     * @return the current time formatted as a string.
+     */
     private String getCurrentTimeAsString(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss");
         return ZonedDateTime.now().format(formatter);

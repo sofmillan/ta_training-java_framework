@@ -1,5 +1,10 @@
 package com.epam.training.sofia_millan.framework.task1.utils;
 
+/**
+ * This class contains fixed values defining different configuration settings
+ * for Google Cloud instances.
+ * @author Sofía Millán
+ */
 public class InstanceConstants {
     public static final String INSTANCE_NUMBER = "Number of Instances";
     public static final String OPERATING_SYSTEM = "Operating System / Software";
