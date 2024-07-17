@@ -3,6 +3,10 @@ package com.epam.training.sofia_millan.framework.task1.service;
 import com.epam.training.sofia_millan.framework.task1.model.Instance;
 
 // ******* CRITERIA 4 *********
+/**
+ * This class is responsible for creating an Instance object using test data retrieved from properties files.
+ * @author Sofía Millán
+ */
 public class InstanceCreator {
     private static final String NUMBER_INSTANCES = "testdata.instances.number";
     private static final String OPERATING_SYSTEM = "testdata.instances.os";
@@ -16,6 +20,10 @@ public class InstanceCreator {
     private static final String COMMITTED_USE = "testdata.instances.committeduse";
     private static final String LOCAL_SSD = "testdata.instances.localssd";
 
+    /**
+     * Creates an Instance object using test data.
+     * @return a new Instance object.
+     */
     public static Instance getInstance(){
         return new Instance(
                 TestDataReader.getTestData(NUMBER_INSTANCES),
