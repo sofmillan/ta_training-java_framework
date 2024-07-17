@@ -12,7 +12,6 @@ public class BrowserUtils {
 
     /**
      * Changes the browser tab to the specified index.
-     *
      * @param driver the WebDriver instance
      * @param index  the index of the tab to switch to
      */
