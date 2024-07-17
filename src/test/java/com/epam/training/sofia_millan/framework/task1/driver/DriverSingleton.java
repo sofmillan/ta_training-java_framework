@@ -5,17 +5,25 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+/**
+ * This class implements the Singleton pattern to provide a single point of access to a WebDriver object.
+ * @author Sofía Millán
+ */
 public class DriverSingleton {
     private static WebDriver driver;
 
-    private DriverSingleton(){}
-
+    /**
+     * Provides a single WebDriver instance. If the driver instance is null,
+     * it initializes it based on the system property "browser".
+     * @return the single instance of WebDriver.
+     */
     public static WebDriver getDriver(){
         if (null == driver){
             switch (System.getProperty("browser")){
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
+                    break;
                 }
                 default: {
                     WebDriverManager.chromedriver().setup();
@@ -26,6 +34,9 @@ public class DriverSingleton {
         return driver;
     }
 
+    /**
+     * Closes the WebDriver instance and terminates all browser windows.
+     */
     public static void closeDriver(){
         driver.quit();
     }
