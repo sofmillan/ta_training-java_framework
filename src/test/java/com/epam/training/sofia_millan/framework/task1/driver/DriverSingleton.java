@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+// ******* CRITERIA 1 *********
 /**
  * This class implements the Singleton pattern to provide a single point of access to a WebDriver object.
  * @author Sofía Millán

@@ -45,7 +45,7 @@ public class GoogleTest {
      * 6. Compares the calculator's estimate with the summary's estimate to ensure they match.
      */
     @Test
-    void calculateEstimate() throws InterruptedException {
+    void calculateEstimate(){
         HomePage homePage = new HomePage(driver);
         homePage.openPage();
         homePage.performSearch();
@@ -63,6 +63,7 @@ public class GoogleTest {
         SummaryPage summaryPage = new SummaryPage(driver);
         double summaryEstimate = summaryPage.getEstimate();
 
+        //assertEquals(calculatorEstimate, summaryEstimate*2); //If this line is uncommented the test will fail
         assertEquals(calculatorEstimate, summaryEstimate);
         assertEquals(summaryPage.getValueOf(InstanceConstants.INSTANCE_NUMBER), instance.getNumber());
         assertEquals(summaryPage.getValueOf(InstanceConstants.GPU_MODEL), instance.getGpuModel());
@@ -73,7 +74,6 @@ public class GoogleTest {
         assertEquals(summaryPage.getValueOf(InstanceConstants.COMMITTED_USE), instance.getCommittedUse());
         assertEquals(summaryPage.getValueOf(InstanceConstants.OPERATING_SYSTEM), instance.getOperatingSystem());
         assertTrue(summaryPage.getValueOf(InstanceConstants.MACHINE_TYPE).contains(instance.getMachineType()));
-
 
     }
 

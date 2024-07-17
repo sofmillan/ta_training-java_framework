@@ -8,9 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 
 /**
  * This class represents the summary page of the Google Cloud Pricing Calculator,
@@ -25,15 +23,13 @@ public class SummaryPage extends  BasePage{
     private String baseResult = "//span[contains(@class,'Z7Pe2d') and contains(., '%s')]//span[contains(@class,'Kfvdz')]";
     /**
      * Constructor for SummaryPage.
-     * Initializes the WebDriver and WebDriverWait, and sets up the PageFactory.
+     * It sets up the PageFactory.
      * @param driver the WebDriver instance
      */
     public SummaryPage(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
-
 
     /**
      * Retrieves the estimated cost.
@@ -56,6 +52,5 @@ public class SummaryPage extends  BasePage{
         String dropDownLocator = String.format(baseResult, title);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dropDownLocator))).getText();
     }
-
 
 }

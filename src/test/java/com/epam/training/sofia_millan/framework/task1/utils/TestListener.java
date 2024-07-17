@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-
+// ******* CRITERIA 6 *********
 public class TestListener implements ITestListener {
     private final Logger logger = LogManager.getRootLogger();
     public void onTestFailure(ITestResult iTestResult) {

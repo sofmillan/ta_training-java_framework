@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Sofía Millán
  */
 public class HomePage extends BasePage{
+    private final static String URL = "https://cloud.google.com/";
 
     @FindBy(xpath = "//div[contains(@class, 'YSM5S')]")
     WebElement searchIcon;
@@ -35,7 +36,7 @@ public class HomePage extends BasePage{
      * Maximizes the browser window.
      */
     public void openPage() {
-        driver.get("https://cloud.google.com/");
+        driver.get(URL);
         driver.manage().window().maximize();
 
     }
