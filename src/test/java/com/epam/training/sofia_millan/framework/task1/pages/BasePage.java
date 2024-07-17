@@ -6,8 +6,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 /**
- * The BasePage class serves as a foundational class for all page objects in a Selenium framework.
- * It initializes the WebDriver and WebDriverWait, providing basic setup for all derived page classes.
+ * This class serves as a parent class for all page objects.
+ * It provides basic setup for derived page classes by initializing the WebDriver and WebDriverWait.
  * @author Sofía Millán
  */
 public abstract class BasePage {
