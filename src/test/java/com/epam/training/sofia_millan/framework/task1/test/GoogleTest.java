@@ -27,7 +27,7 @@ public class GoogleTest {
     static WebDriver driver;
 
     /**
-     * Initializes the driver, using ChromeDriver, before any test methods are executed.
+     * Initializes the driver before any test methods are executed.
      */
     @BeforeClass
     static void setUp(){
@@ -37,12 +37,14 @@ public class GoogleTest {
 
     /**
      * This test method:
-     * 1. Opens the Google Cloud Pricing Calculator page.
-     * 2. Completes the required form fields to get an estimate.
-     * 3. Obtains and stores the estimate from the calculator.
-     * 4. Shares the estimate to generate a summary.
-     * 5. Obtains and stores the estimate from the summary page.
-     * 6. Compares the calculator's estimate with the summary's estimate to ensure they match.
+     * 1. Opens the Google Cloud home page.
+     * 2. Searches for the Google Cloud Pricing Calculator.
+     * 3. Completes the required form fields to get an estimate.
+     * 4. Obtains and stores the estimate from the calculator.
+     * 5. Shares the estimate to generate a summary.
+     * 6. Obtains and stores the estimate from the summary page.
+     * 7. Compares the calculator's estimate with the summary's estimate to ensure they match,
+     * as well as the values provided in the form.
      */
     @Test
     void calculateEstimate(){
