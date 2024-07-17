@@ -38,8 +38,7 @@ public class CalculatorPage extends BasePage{
 
     /**
      * Constructor for CalculatorPage.
-     * It sets up the PageFactory.
-     *
+     * It sets up PageFactory.
      * @param driver the WebDriver instance.
      */
     public CalculatorPage(WebDriver driver) {
@@ -49,6 +48,7 @@ public class CalculatorPage extends BasePage{
 
     /**
      * Fills the form for Computer Engine.
+     * @param instance the instance object with values to complete form
      */
     public void fillForm(Instance instance) {
         addProductToEstimate(product);
@@ -134,7 +134,6 @@ public class CalculatorPage extends BasePage{
      * @param value the value of the list item
      * @return the WebElement representing the list item
      */
-
     private WebElement findItemInList(String title, String value){
         String listItemLocator = String.format(baseListItem, title, value);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listItemLocator)));

@@ -8,8 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * The HomePage class represents the main page of the Google Cloud website.
- * It extends the BasePage class, initializing web elements and providing methods to interact with the page.
+ * This class represents the main page of the Google Cloud website.
  * @author Sofía Millán
  */
 public class HomePage extends BasePage{
@@ -22,9 +21,9 @@ public class HomePage extends BasePage{
     WebElement searchBar;
 
     /**
-     * Constructs a new HomePage.
-     *
-     * @param driver the WebDriver instance to be used by this page class
+     * Constructor for HomePage.
+     *  It sets up PageFactory.
+     * @param driver the WebDriver instance
      */
     public HomePage(WebDriver driver) {
         super(driver);
@@ -32,18 +31,16 @@ public class HomePage extends BasePage{
     }
 
     /**
-     * Opens the calculator page in the web browser.
+     * Opens the Google Cloud website.
      * Maximizes the browser window.
      */
     public void openPage() {
         driver.get(URL);
         driver.manage().window().maximize();
-
     }
 
     /**
      * Performs a search for the Google Cloud Platform Pricing Calculator using the search bar.
-     * It clicks the search icon, waits for the search bar to be visible, enters the search term, and submits the search.
      */
     public void performSearch(){
         searchIcon.click();
