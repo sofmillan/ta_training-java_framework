@@ -8,8 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 /**
- * The SearchResultsPage class represents the search results page on the Google Cloud website.
- * It extends the BasePage class, initializing web elements and providing methods to interact with the page.
+ * This class represents the search results page on the Google Cloud website.
  * @author Sofía Millán
  */
 public class SearchResultsPage extends BasePage {
@@ -18,9 +17,9 @@ public class SearchResultsPage extends BasePage {
     WebElement result;
 
     /**
-     * Constructs a new SearchResultsPage.
-     *
-     * @param driver the WebDriver instance to be used by this page class
+     * Constructor for SearchResultsPage.
+     *  It sets up PageFactory.
+     * @param driver the WebDriver instance
      */
     public SearchResultsPage(WebDriver driver) {
         super(driver);
@@ -30,7 +29,6 @@ public class SearchResultsPage extends BasePage {
 
     /**
      * Clicks on the link to the Google Cloud Pricing Calculator in the search results.
-     * Waits until the link is visible before clicking.
      */
     public void followLinkToCalculator() {
         wait.until(ExpectedConditions.visibilityOf(result)).click();

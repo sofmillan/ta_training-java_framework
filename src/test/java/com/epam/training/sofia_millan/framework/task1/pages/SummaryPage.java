@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * This class represents the summary page of the Google Cloud Pricing Calculator,
- * which displays the estimated cost of selected services.
+ * which displays the estimated cost of selected services and the details of the selected configuration.
  * @author Sofía Millán
  */
 public class SummaryPage extends  BasePage{
@@ -23,7 +23,7 @@ public class SummaryPage extends  BasePage{
     private String baseResult = "//span[contains(@class,'Z7Pe2d') and contains(., '%s')]//span[contains(@class,'Kfvdz')]";
     /**
      * Constructor for SummaryPage.
-     * It sets up the PageFactory.
+     * It sets up PageFactory.
      * @param driver the WebDriver instance
      */
     public SummaryPage(WebDriver driver) {
@@ -44,7 +44,6 @@ public class SummaryPage extends  BasePage{
 
     /**
      * Retrieves the text value of a web element based on the specified title.
-     *
      * @param title the title used to locate the web element
      * @return the text value of the web element
      */
