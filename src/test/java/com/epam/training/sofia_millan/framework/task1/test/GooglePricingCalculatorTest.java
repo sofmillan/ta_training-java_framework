@@ -45,6 +45,7 @@ public class GooglePricingCalculatorTest {
         Instance instance = InstanceCreator.getInstance();
         SummaryPage summaryPage = task1Flow(instance);
 
+        //assertEquals(summaryPage.getValueOf(InstanceConstants.INSTANCE_NUMBER), "Error");  // Uncommenting this line will result in a failure.
         assertEquals(summaryPage.getValueOf(InstanceConstants.INSTANCE_NUMBER), instance.getNumber());
         assertEquals(summaryPage.getValueOf(InstanceConstants.GPU_MODEL), instance.getGpuModel());
         assertEquals(summaryPage.getValueOf(InstanceConstants.REGION), instance.getRegion());
