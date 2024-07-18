@@ -1,7 +1,5 @@
 package com.epam.training.sofia_millan.framework.task1.pages;
 
-import com.epam.training.sofia_millan.framework.task1.utils.BrowserUtils;
-import com.epam.training.sofia_millan.framework.task1.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,17 +30,6 @@ public class SummaryPage extends  BasePage{
     }
 
     /**
-     * Retrieves the estimated cost.
-     * @return the estimated cost as a double
-     */
-    public double getEstimate(){
-        BrowserUtils.changeTab(driver,"1");
-        String estimate = wait.until(ExpectedConditions
-                .visibilityOf(estimatedCostTitle)).getText();
-        return Utils.convertStringToDouble(estimate);
-    }
-
-    /**
      * Retrieves the text value of a web element based on the specified title.
      * @param title the title used to locate the web element
      * @return the text value of the web element
@@ -51,5 +38,4 @@ public class SummaryPage extends  BasePage{
         String dropDownLocator = String.format(baseResult, title);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dropDownLocator))).getText();
     }
-
 }

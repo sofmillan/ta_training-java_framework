@@ -36,6 +36,10 @@ public class GooglePricingCalculatorTest {
     }
 
 
+    /**
+     * This test method compares the values provided in the form (GPU number and model, number of instances, provisioning model and region)
+     * to the ones presented on the Cost Estimate Summary
+     */
     @Test(groups = {"smoke"})
     void scenario1(){
         Instance instance = InstanceCreator.getInstance();
@@ -48,6 +52,10 @@ public class GooglePricingCalculatorTest {
         assertEquals(summaryPage.getValueOf(InstanceConstants.GPU_NUMBER), instance.getNumberGpus());
     }
 
+    /**
+     * This test method compares the values provided in the form (local SSD, committed use option, machine type and operating system)
+     * to the ones presented on the Cost Estimate Summary
+     */
     @Test
     void scenario2(){
         Instance instance = InstanceCreator.getInstance();
@@ -59,10 +67,22 @@ public class GooglePricingCalculatorTest {
         assertTrue(summaryPage.getValueOf(InstanceConstants.MACHINE_TYPE).contains(instance.getMachineType()));
     }
 
+    /**
+     * This method represent the flow to use the Google Cloud Pricing Calculator, performing the following steps:
+     * 1. Opens the Google Cloud home page.
+     * 2. Searches for the Google Cloud Pricing Calculator.
+     * 3. Completes the required form fields to get an estimate.
+     * 4. Shares the estimate to generate a summary.
+     * @param instance an Instance object with data to fill form
+     * @return a SummaryPage instance
+     */
     private SummaryPage task1Flow(Instance instance){
+        String searchTerm = "Google Cloud Platform Pricing Calculator";
+        String tabTitle="Google Cloud Estimate Summary";
+
         HomePage homePage = new HomePage(driver);
         homePage.openPage();
-        homePage.performSearch();
+        homePage.performSearch(searchTerm);
 
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.followLinkToCalculator();
@@ -70,7 +90,8 @@ public class GooglePricingCalculatorTest {
         CalculatorPage calculatorPage = new CalculatorPage(driver);
         calculatorPage.fillForm(instance);
         calculatorPage.shareEstimate();
-        BrowserUtils.changeTab(driver,"Google Cloud Estimate Summary");
+        BrowserUtils.changeTab(driver,tabTitle);
+
         return new SummaryPage(driver);
     }
 

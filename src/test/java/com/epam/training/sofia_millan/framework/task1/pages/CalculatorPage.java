@@ -2,7 +2,6 @@ package com.epam.training.sofia_millan.framework.task1.pages;
 
 import com.epam.training.sofia_millan.framework.task1.model.Instance;
 import com.epam.training.sofia_millan.framework.task1.utils.InstanceConstants;
-import com.epam.training.sofia_millan.framework.task1.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -54,6 +53,7 @@ public class CalculatorPage extends BasePage{
         addProductToEstimate(product);
 
         wait.until(ExpectedConditions.visibilityOf(updateMessage));
+        wait.until(ExpectedConditions.invisibilityOf(updateMessage));
 
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
         numberInstancesInput.sendKeys(instance.getNumber());

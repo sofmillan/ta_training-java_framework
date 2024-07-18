@@ -3,6 +3,8 @@ package com.epam.training.sofia_millan.framework.task1.utils;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Utility class providing functions for string manipulation and conversion.
@@ -11,22 +13,11 @@ import java.text.ParseException;
 public class Utils {
 
     /**
-     * Converts a string representation of an amount to a double.
-     * The input string can contain non-numeric characters.
-     *
-     * @param amount the string representation of the amount
-     * @return the double value of the amount
-     * @throws RuntimeException if the string cannot be parsed to a number
+     * Returns the current time as a string formatted as {@code yyyy-MM-dd_HH-mm-ss}.
+     * @return the current time formatted as a string.
      */
-    public static double convertStringToDouble(String amount)  {
-        amount = amount.replaceAll("[^\\d,\\.]", "").replace(" ", "");
-        NumberFormat format = NumberFormat.getInstance();
-        Number number;
-        try {
-            number = format.parse(amount);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        return number.doubleValue();
+    public static String getCurrentTimeAsString(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss");
+        return ZonedDateTime.now().format(formatter);
     }
 }

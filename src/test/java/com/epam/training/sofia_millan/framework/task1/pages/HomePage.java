@@ -42,9 +42,9 @@ public class HomePage extends BasePage{
     /**
      * Performs a search for the Google Cloud Platform Pricing Calculator using the search bar.
      */
-    public void performSearch(){
+    public void performSearch(String searchTerm){
         searchIcon.click();
-        wait.until(ExpectedConditions.visibilityOf(searchBar)).sendKeys("Google Cloud Platform Pricing Calculator");
+        wait.until(ExpectedConditions.visibilityOf(searchBar)).sendKeys(searchTerm);
         searchBar.sendKeys(Keys.RETURN);
     }
 }

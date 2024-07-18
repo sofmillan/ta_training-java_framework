@@ -26,7 +26,6 @@ public class SearchResultsPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-
     /**
      * Clicks on the link to the Google Cloud Pricing Calculator in the search results.
      */
