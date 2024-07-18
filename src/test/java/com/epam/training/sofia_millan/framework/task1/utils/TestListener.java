@@ -11,8 +11,6 @@ import org.testng.ITestResult;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 // ******* CRITERIA 6 *********
 /**
@@ -41,19 +39,12 @@ public class TestListener implements ITestListener {
         try {
             FileUtils.copyFile(screenCapture, new File(
                     ".//target/test-failure-screenshots/"
-                            + getCurrentTimeAsString() +
+                            + Utils.getCurrentTimeAsString() +
                             ".png"));
         } catch (IOException e) {
             logger.error("Unable to save the screenshot: "+e.getMessage());
         }
     }
 
-    /**
-     * Returns the current time as a string formatted as {@code yyyy-MM-dd_HH-mm-ss}.
-     * @return the current time formatted as a string.
-     */
-    private String getCurrentTimeAsString(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss");
-        return ZonedDateTime.now().format(formatter);
-    }
+
 }

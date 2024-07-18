@@ -2,7 +2,6 @@ package com.epam.training.sofia_millan.framework.task1.pages;
 
 import com.epam.training.sofia_millan.framework.task1.model.Instance;
 import com.epam.training.sofia_millan.framework.task1.utils.InstanceConstants;
-import com.epam.training.sofia_millan.framework.task1.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -52,7 +51,10 @@ public class CalculatorPage extends BasePage{
      */
     public void fillForm(Instance instance) {
         addProductToEstimate(product);
+
+        wait.until(ExpectedConditions.visibilityOf(updateMessage));
         wait.until(ExpectedConditions.invisibilityOf(updateMessage));
+
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
         numberInstancesInput.sendKeys(instance.getNumber());
 
@@ -96,16 +98,6 @@ public class CalculatorPage extends BasePage{
         wait.until(ExpectedConditions.invisibilityOf(updateMessage));
         shareButton.click();
         wait.until(ExpectedConditions.visibilityOf(openEstimateButton)).click();
-    }
-
-    /**
-     * Waits for any update messages to disappear before retrieving the estimated cost.
-     * @return the estimated cost as a double
-     */
-    public Double getEstimate(){
-        wait.until(ExpectedConditions.invisibilityOf(updateMessage));
-        String estimate = estimatedCost.getText();
-        return Utils.convertStringToDouble(estimate);
     }
 
     /**

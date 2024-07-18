@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 public class TestDataReader {
     private static ResourceBundle resourceBundle = ResourceBundle.getBundle(System.getProperty("environment"));
 
-
     /**
      * Retrieves the corresponding test data value from the resource bundle based on the provided key.
      * @param key the key for the desired test data value.
