@@ -52,7 +52,9 @@ public class CalculatorPage extends BasePage{
      */
     public void fillForm(Instance instance) {
         addProductToEstimate(product);
-        wait.until(ExpectedConditions.invisibilityOf(updateMessage));
+
+        wait.until(ExpectedConditions.visibilityOf(updateMessage));
+
         wait.until(ExpectedConditions.visibilityOf(numberInstancesInput)).clear();
         numberInstancesInput.sendKeys(instance.getNumber());
 
@@ -96,16 +98,6 @@ public class CalculatorPage extends BasePage{
         wait.until(ExpectedConditions.invisibilityOf(updateMessage));
         shareButton.click();
         wait.until(ExpectedConditions.visibilityOf(openEstimateButton)).click();
-    }
-
-    /**
-     * Waits for any update messages to disappear before retrieving the estimated cost.
-     * @return the estimated cost as a double
-     */
-    public Double getEstimate(){
-        wait.until(ExpectedConditions.invisibilityOf(updateMessage));
-        String estimate = estimatedCost.getText();
-        return Utils.convertStringToDouble(estimate);
     }
 
     /**

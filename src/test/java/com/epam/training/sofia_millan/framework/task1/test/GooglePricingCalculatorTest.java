@@ -37,9 +37,9 @@ public class GooglePricingCalculatorTest {
 
 
     @Test(groups = {"smoke"})
-    void escenario1(){
+    void scenario1(){
         Instance instance = InstanceCreator.getInstance();
-        SummaryPage summaryPage = flow(instance);
+        SummaryPage summaryPage = task1Flow(instance);
 
         assertEquals(summaryPage.getValueOf(InstanceConstants.INSTANCE_NUMBER), instance.getNumber());
         assertEquals(summaryPage.getValueOf(InstanceConstants.GPU_MODEL), instance.getGpuModel());
@@ -49,9 +49,9 @@ public class GooglePricingCalculatorTest {
     }
 
     @Test
-    void escenario2(){
+    void scenario2(){
         Instance instance = InstanceCreator.getInstance();
-        SummaryPage summaryPage = flow(instance);
+        SummaryPage summaryPage = task1Flow(instance);
 
         assertEquals(summaryPage.getValueOf(InstanceConstants.LOCAL_SSD), instance.getLocalSSD());
         assertEquals(summaryPage.getValueOf(InstanceConstants.COMMITTED_USE), instance.getCommittedUse());
@@ -59,7 +59,7 @@ public class GooglePricingCalculatorTest {
         assertTrue(summaryPage.getValueOf(InstanceConstants.MACHINE_TYPE).contains(instance.getMachineType()));
     }
 
-    private SummaryPage flow(Instance instance){
+    private SummaryPage task1Flow(Instance instance){
         HomePage homePage = new HomePage(driver);
         homePage.openPage();
         homePage.performSearch();
@@ -70,7 +70,7 @@ public class GooglePricingCalculatorTest {
         CalculatorPage calculatorPage = new CalculatorPage(driver);
         calculatorPage.fillForm(instance);
         calculatorPage.shareEstimate();
-        BrowserUtils.changeTab(driver,1);
+        BrowserUtils.changeTab(driver,"Google Cloud Estimate Summary");
         return new SummaryPage(driver);
     }
 

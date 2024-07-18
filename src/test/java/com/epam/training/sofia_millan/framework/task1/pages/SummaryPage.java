@@ -36,7 +36,7 @@ public class SummaryPage extends  BasePage{
      * @return the estimated cost as a double
      */
     public double getEstimate(){
-        BrowserUtils.changeTab(driver,1);
+        BrowserUtils.changeTab(driver,"1");
         String estimate = wait.until(ExpectedConditions
                 .visibilityOf(estimatedCostTitle)).getText();
         return Utils.convertStringToDouble(estimate);

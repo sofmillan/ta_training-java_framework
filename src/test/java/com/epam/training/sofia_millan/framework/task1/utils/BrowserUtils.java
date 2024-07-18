@@ -2,7 +2,7 @@ package com.epam.training.sofia_millan.framework.task1.utils;
 
 import org.openqa.selenium.WebDriver;
 
-import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Utility class providing browser-related functions.
@@ -11,12 +11,18 @@ import java.util.ArrayList;
 public class BrowserUtils {
 
     /**
-     * Changes the browser tab to the specified index.
+     * Changes the browser tab to the specified title.
      * @param driver the WebDriver instance
-     * @param index  the index of the tab to switch to
+     * @param tabTitle the title of the tab to switch to
      */
-    public static void changeTab(WebDriver driver, int index){
-        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(index));
+    public static void changeTab(WebDriver driver, String tabTitle){
+        Set<String> windowHandles = driver.getWindowHandles();
+
+        for (String handle : windowHandles) {
+            driver.switchTo().window(handle);
+            if (driver.getTitle().equals(tabTitle)) {
+                break;
+            }
+        }
     }
 }

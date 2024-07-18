@@ -39,6 +39,10 @@ public class DriverSingleton {
      * Closes the WebDriver instance and terminates all browser windows.
      */
     public static void closeDriver(){
-        driver.quit();
+        if(driver!=null){
+            driver.quit();
+            driver = null;
+        }
+
     }
 }

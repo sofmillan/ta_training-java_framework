@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="SmokeSuite" verbose="3">
-    <test name="SmokeTests">
+<suite name="Smoke Suite" verbose="1">
+    <test name="Smoke Tests">
         <groups>
             <run>
                 <include name="smoke"/>
             </run>
         </groups>
-        <classes>
-            <class name="com.epam.training.sofia_millan.framework.task1.test.GooglePricingCalculatorTest"/>
-        </classes>
+        <packages>
+            <package name="com.epam.training.sofia_millan.framework.task1.test"/>
+        </packages>
     </test>
 </suite>
