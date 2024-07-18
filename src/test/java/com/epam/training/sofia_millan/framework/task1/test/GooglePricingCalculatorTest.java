@@ -1,6 +1,5 @@
 package com.epam.training.sofia_millan.framework.task1.test;
 
-
 import com.epam.training.sofia_millan.framework.task1.driver.DriverSingleton;
 import com.epam.training.sofia_millan.framework.task1.model.Instance;
 import com.epam.training.sofia_millan.framework.task1.pages.CalculatorPage;

@@ -40,7 +40,8 @@ public class HomePage extends BasePage{
     }
 
     /**
-     * Performs a search for the Google Cloud Platform Pricing Calculator using the search bar.
+     * Performs a search using the search bar.
+     * @param searchTerm term to be searched
      */
     public void performSearch(String searchTerm){
         searchIcon.click();

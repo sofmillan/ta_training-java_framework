@@ -1,8 +1,5 @@
 package com.epam.training.sofia_millan.framework.task1.utils;
 
-
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
