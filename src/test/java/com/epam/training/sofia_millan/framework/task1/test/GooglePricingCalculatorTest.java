@@ -68,11 +68,7 @@ public class GooglePricingCalculatorTest {
     }
 
     /**
-     * This method represent the flow to use the Google Cloud Pricing Calculator, performing the following steps:
-     * 1. Opens the Google Cloud home page.
-     * 2. Searches for the Google Cloud Pricing Calculator.
-     * 3. Completes the required form fields to get an estimate.
-     * 4. Shares the estimate to generate a summary.
+     * This method represent the flow to use the Google Cloud Pricing Calculator.
      * @param instance an Instance object with data to fill form
      * @return a SummaryPage instance
      */
@@ -80,13 +76,16 @@ public class GooglePricingCalculatorTest {
         String searchTerm = "Google Cloud Platform Pricing Calculator";
         String tabTitle="Google Cloud Estimate Summary";
 
+        // 1. Opens the Google Cloud Page and searches for the Pricing Calculator
         HomePage homePage = new HomePage(driver);
         homePage.openPage();
         homePage.performSearch(searchTerm);
 
+        // 2. Selects the link related to the Pricing Calculator
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.followLinkToCalculator();
 
+        // 3. Fills form related to Compute Engine and shares the estimate
         CalculatorPage calculatorPage = new CalculatorPage(driver);
         calculatorPage.fillForm(instance);
         calculatorPage.shareEstimate();
