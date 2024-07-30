@@ -3,6 +3,7 @@ package com.epam.training.sofia_millan.framework.task1.driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 // ******* CRITERIA 1 *********
@@ -28,6 +29,8 @@ public class DriverSingleton {
                 }
                 default: {
                     WebDriverManager.chromedriver().setup();
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--disable-search-engine-choice-screen");
                     driver = new ChromeDriver();
                 }
             }
