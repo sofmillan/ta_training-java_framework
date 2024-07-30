@@ -61,6 +61,7 @@ public class GooglePricingCalculatorTest {
         Instance instance = InstanceCreator.getInstance();
         SummaryPage summaryPage = task1Flow(instance);
 
+        //assertEquals(summaryPage.getValueOf(InstanceConstants.LOCAL_SSD), "Error");  // Uncommenting this line will result in a failure.
         assertEquals(summaryPage.getValueOf(InstanceConstants.LOCAL_SSD), instance.getLocalSSD());
         assertEquals(summaryPage.getValueOf(InstanceConstants.COMMITTED_USE), instance.getCommittedUse());
         assertEquals(summaryPage.getValueOf(InstanceConstants.OPERATING_SYSTEM), instance.getOperatingSystem());
